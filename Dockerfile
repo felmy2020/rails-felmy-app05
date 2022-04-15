@@ -19,9 +19,9 @@ COPY ./src /app
 RUN bundle config --local set path 'vendor/bundle' \
   && bundle install
 
-RUN bundle exec rake secret
-RUN yarn install --check-files
-RUN bundle exec rails webpacker:compile
+# RUN bundle exec rake secret
+# RUN yarn install --check-files
+# RUN bundle exec rails webpacker:compile
 
 COPY start.sh /start.sh
 RUN chmod 744 /start.sh
