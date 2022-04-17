@@ -40,6 +40,9 @@ jobs:
       #     name: Database setup
       #     command: bundle exec  rails db:seed
       - run:
+          name: yarnを追加
+          command: yarn install
+      - run:
           name: assets compile
           command: bundle exec rails assets:precompile
       - run:
