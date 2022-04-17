@@ -6,6 +6,6 @@ RSpec.describe 'Top', type: :system do
     # root_pathへアクセス
     visit root_path
     # ページ内に'Hello World!'が含まれているかを検証
-    expect(page).to have_content 'このページはトプページです'
+    expect(page).to have_content 'このページはトップページです'
   end
 end
