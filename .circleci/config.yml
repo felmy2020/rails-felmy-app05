@@ -21,8 +21,6 @@ jobs:
           MYSQL_ROOT_PASSWORD: password
           MYSQL_DATABASE: app_test
           MYSQL_USER: root
-      - image: selenium/standalone-chrome-debug:latest
-        name: chrome
     environment:
       BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
@@ -39,20 +37,6 @@ jobs:
       # - run:
       #     name: Database setup
       #     command: bundle exec  rails db:seed
-      - run:
-          name: 初期インストール
-          command: |
-            curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-            echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-            apt-get update -qq
-            apt-get install -y nodejs yarn mariadb-client vim
-      - run:
-          name: bundle install
-          command: bundle config --local set path 'vendor/bundle'
-            bundle install
-      - run:
-          name: assets compile
-          command: bundle exec rails assets:precompile
       - run:
           name: test
           command: bundle exec rspec
