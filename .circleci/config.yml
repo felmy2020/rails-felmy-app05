@@ -37,8 +37,17 @@ jobs:
           name: Database setup
           command: bundle exec rails db:migrate
       - run:
-          name: yarn install
-          command: npm install --global yarn
+          name: install 1
+          command: curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+      - run:
+          name: install 2
+          command: echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+      - run:
+          name: install 3
+          command: apt-get update -qq
+      - run:
+          name: install 4
+          command: apt-get install -y nodejs yarn mariadb-client vim
       - run:
           name: webpacker compile
           command: bundle exec rake assets:precompile
