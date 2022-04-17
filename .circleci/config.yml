@@ -37,6 +37,9 @@ jobs:
           name: Database setup
           command: bundle exec rails db:migrate
       - run:
+          name: yarn install
+          command: npm install --global yarn
+      - run:
           name: webpacker compile
           command: bundle exec rake assets:precompile
       # - run:
