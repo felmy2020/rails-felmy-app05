@@ -40,6 +40,9 @@ jobs:
       #     name: Database setup
       #     command: bundle exec  rails db:seed
       - run:
+          name: assets compile
+          command: rails assets:precompile
+      - run:
           name: test
           command: bundle exec rspec
 
