@@ -37,9 +37,6 @@ jobs:
           name: Database setup
           command: bundle exec rails db:migrate
       - run:
-          name: apt-get
-          command: apt-get install -y nodejs yarn mariadb-client vim
-      - run:
           name: webpacker compile
           command: bundle exec rake assets:precompile
       # - run:
