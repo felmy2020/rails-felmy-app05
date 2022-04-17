@@ -41,7 +41,7 @@ jobs:
       #     command: bundle exec  rails db:seed
       - run:
           name: assets compile
-          command: rails assets:precompile
+          command: bundle exec rails assets:precompile
       - run:
           name: test
           command: bundle exec rspec
