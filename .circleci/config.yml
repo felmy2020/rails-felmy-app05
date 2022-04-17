@@ -16,7 +16,6 @@ jobs:
   test:
     docker:
       - image: cimg/ruby:2.7.5
-        user: root
       - image: circleci/mysql:5.5
         environment:
           MYSQL_ROOT_PASSWORD: password
@@ -39,16 +38,7 @@ jobs:
           command: bundle exec rails db:migrate
       - run:
           name: install 1
-          command: sudo curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-      - run:
-          name: install 2
-          command: sudo echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-      - run:
-          name: install 3
-          command: sudo apt-get update -qq
-      - run:
-          name: install 4
-          command: sudo apt-get install -y nodejs yarn mariadb-client vim
+          command: curl -o- -L https://yarnpkg.com/install.sh | bash
       - run:
           name: webpacker compile
           command: bundle exec rake assets:precompile
