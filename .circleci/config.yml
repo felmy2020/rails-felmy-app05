@@ -68,13 +68,13 @@ jobs:
           command: heroku container:release web -a $HEROKU_APP_NAME
       - run:
           name: database setup
-          command: heroku run bundle exec rake db:migrate:reset RAILS_ENV=production -a $HEROKU_APP_NAME
+          command: heroku run bundle exec rake db:migrate:reset RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 -a $HEROKU_APP_NAME
       - run:
           name: Seed data-1
-          command: bundle exec rails db:seed SECTION=2 RAILS_ENV=production -a $HEROKU_APP_NAME
+          command: heroku run bundle exec rails db:seed SECTION=2 RAILS_ENV=production -a $HEROKU_APP_NAME
       - run:
           name: Seed data-2
-          command: bundle exec rails db:seed SECTION=7 RAILS_ENV=production -a $HEROKU_APP_NAME
+          command: heroku run bundle exec rails db:seed SECTION=7 RAILS_ENV=production -a $HEROKU_APP_NAME
 
 workflows:
   version: 2
