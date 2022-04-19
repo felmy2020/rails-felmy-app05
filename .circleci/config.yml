@@ -7,10 +7,10 @@ jobs:
   build:
     docker:
       - image: cimg/ruby:2.7.5
-    working_directory: ~/dev-docker-rails6/src
+    working_directory: ~/rails-felmy-app05/src
     steps:
       - checkout:
-          path: ~/dev-docker-rails6
+          path: ~/rails-felmy-app05
       - ruby/install-deps
 
   test:
@@ -19,7 +19,7 @@ jobs:
       - image: circleci/mysql:5.5
         environment:
           MYSQL_ROOT_PASSWORD: password
-          MYSQL_DATABASE: app_test
+          MYSQL_DATABASE: app05_test
           MYSQL_USER: root
       - image: selenium/standalone-chrome-debug:latest
         name: chrome
@@ -28,10 +28,10 @@ jobs:
       BUNDLE_RETRY: "3"
       APP_DATABASE_HOST: "127.0.0.1"
       RAILS_ENV: test
-    working_directory: ~/dev-docker-rails6/src
+    working_directory: ~/rails-felmy-app05/src
     steps:
       - checkout:
-          path: ~/dev-docker-rails6
+          path: ~/rails-felmy-app05
       - ruby/install-deps
       - run:
           name: Database setup
