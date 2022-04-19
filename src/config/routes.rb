@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-  # --- ここから追加 ---
-root 'top#index'
-  # --- ここまで追加 ---
+  root 'games#new'
+  resources :games, only: %i[new create update] do
+
+    member do
+      get :give_up
+      get :challenge
+      get :correct
+    end
+
+    resource :progresses, only: %i[new create]
+  end
 end
