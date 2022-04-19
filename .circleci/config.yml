@@ -71,10 +71,10 @@ jobs:
           command: heroku run bundle exec rake db:migrate:reset RAILS_ENV=production -a $HEROKU_APP_NAME
       - run:
           name: Seed data-1
-          command: bundle exec rails db:seed SECTION=2 RAILS_ENV=production
+          command: bundle exec rails db:seed SECTION=2 RAILS_ENV=production -a $HEROKU_APP_NAME
       - run:
           name: Seed data-2
-          command: bundle exec rails db:seed SECTION=7 RAILS_ENV=production
+          command: bundle exec rails db:seed SECTION=7 RAILS_ENV=production -a $HEROKU_APP_NAME
 
 workflows:
   version: 2
