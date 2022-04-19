@@ -35,13 +35,16 @@ jobs:
       - ruby/install-deps
       - run:
           name: Database setup
-          command: bundle exec rails db:migrate
+          command: bundle exec rails db:migrate:reset
       - run:
           name: webpacker compile
           command: bundle exec rake assets:precompile
-      # - run:
-      #     name: Database setup
-      #     command: bundle exec  rails db:seed
+      - run:
+          name: Seed data-1
+          command: bundle exec rails db:seed SECTION=2
+      - run:
+          name: Seed data-2
+          command: bundle exec rails db:seed SECTION=7
       - run:
           name: test
           command: bundle exec rspec
