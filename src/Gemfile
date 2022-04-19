@@ -31,7 +31,6 @@ group :test do
   #RspecのSystemテストのため導入
   gem 'capybara', '~> 3.28'
   gem 'selenium-webdriver', '~> 3.142'
-
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
